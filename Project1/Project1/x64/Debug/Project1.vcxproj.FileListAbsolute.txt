@@ -1,0 +1,3 @@
+C:\Projekty\Kalkulator_walut\Project1\Project1\x64\Debug\Project1.vcxproj.AssemblyReference.cache
+C:\Projekty\Kalkulator_walut\Project1\Project1\x64\Debug\Project1.MyForm.resources
+C:\Projekty\Kalkulator_walut\Project1\Project1\x64\Debug\Project1.vcxproj.GenerateResource.cache
