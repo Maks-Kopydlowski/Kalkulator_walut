@@ -347,6 +347,7 @@ namespace Project1 {
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
     textBox2->Clear();
     label5->Text = "Stan zapisu/odczytu";
+    label2->Text = "Kwota";
 }
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
