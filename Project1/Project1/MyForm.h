@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-
+#include "MyForm1.h"
+#include "MyForm2.h"
 
 namespace Project1 {
 
@@ -8,9 +9,10 @@ namespace Project1 {
     using namespace System::Windows::Forms;
     using namespace System::IO;
 
-
     public ref class MyForm : public System::Windows::Forms::Form {
     public:
+        double usdNaPln = 3.99;
+        double usdNaEur = 0.90;
         MyForm(void) {
             InitializeComponent();
             //
@@ -18,7 +20,19 @@ namespace Project1 {
             //
         }
 
+
     protected:
+        void UstawDaneZMyForm2(String^ textBox1Text, String^ textBox2Text) {
+            // Zamieñ tekst na double i przypisz do zmiennych
+            try {
+                usdNaPln = Convert::ToDouble(textBox1Text);
+                usdNaEur = Convert::ToDouble(textBox2Text);
+            }
+            catch (FormatException^) {
+                // Obs³uga b³êdu, jeœli konwersja nie powiedzie siê
+                MessageBox::Show("WprowadŸ poprawne liczby.", "B³¹d", MessageBoxButtons::OK, MessageBoxIcon::Error);
+            }
+        }
         /// <summary>
         /// Wyczyœæ wszystkie u¿ywane zasoby.
         /// </summary>
@@ -43,6 +57,9 @@ namespace Project1 {
     private: System::Windows::Forms::Button^ button3;
     private: System::Windows::Forms::Button^ button4;
     private: System::Windows::Forms::Label^ label5;
+    private: System::Windows::Forms::Button^ button5;
+    private: System::Windows::Forms::Label^ label6;
+
     private: System::ComponentModel::IContainer^ components;
 
     private:
@@ -72,6 +89,8 @@ namespace Project1 {
             this->button3 = (gcnew System::Windows::Forms::Button());
             this->button4 = (gcnew System::Windows::Forms::Button());
             this->label5 = (gcnew System::Windows::Forms::Label());
+            this->button5 = (gcnew System::Windows::Forms::Button());
+            this->label6 = (gcnew System::Windows::Forms::Label());
             this->SuspendLayout();
             // 
             // button1
@@ -213,11 +232,32 @@ namespace Project1 {
             this->label5->Text = L"Stan zapisu/odczytu";
             this->label5->Click += gcnew System::EventHandler(this, &MyForm::label5_Click);
             // 
+            // button5
+            // 
+            this->button5->Location = System::Drawing::Point(34, 393);
+            this->button5->Name = L"button5";
+            this->button5->Size = System::Drawing::Size(414, 27);
+            this->button5->TabIndex = 13;
+            this->button5->Text = L"Administrator";
+            this->button5->UseVisualStyleBackColor = true;
+            this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+            // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->Location = System::Drawing::Point(0, 0);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(35, 13);
+            this->label6->TabIndex = 14;
+            this->label6->Text = L"label6";
+            // 
             // MyForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(575, 376);
+            this->ClientSize = System::Drawing::Size(884, 511);
+            this->Controls->Add(this->label6);
+            this->Controls->Add(this->button5);
             this->Controls->Add(this->label5);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
@@ -245,6 +285,7 @@ namespace Project1 {
     }
 
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
         double kwota;
         if (Double::TryParse(textBox1->Text, kwota)) {
             String^ zWaluty = safe_cast<String^>(comboBox1->SelectedItem);
@@ -264,8 +305,7 @@ namespace Project1 {
            // Funkcja przeliczaj¹ca kursy walut
            double przewalutowanie(double kwota, String^ zWaluty, String^ naWalute) {
                // Kursy walut
-               double usdNaPln = 3.99;
-               double usdNaEur = 0.90;
+               
 
                if (zWaluty == "PLN") {
                    if (naWalute == "USD") {
@@ -350,6 +390,19 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
     label2->Text = "Kwota";
 }
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+    MyForm1^ formaJeden = gcnew MyForm1();
+    formaJeden->ShowDialog();
+}
+private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label11_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
