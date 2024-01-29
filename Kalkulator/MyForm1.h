@@ -17,6 +17,7 @@ namespace Kalkulator {
 	/// <summary>
 	/// Podsumowanie informacji o MyForm1
 	/// </summary>
+	/// 
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
@@ -34,7 +35,7 @@ namespace Kalkulator {
 	private: System::Windows::Forms::ErrorProvider^ errorProvider1;
 	public:
 	private: System::Windows::Forms::Label^ label9;
-		   double getUsdNaPln() { return usdNaEur; }
+		double getUsdNaPln() { return usdNaEur; }
 		void setUsdNaPln(double value) { usdNaPln = value; }
 		double getUseNaEur() { return usdNaEur; }
 		void setUsdNaEur(double value) { usdNaEur = value; }
@@ -67,9 +68,6 @@ namespace Kalkulator {
 		}
 		void UpdateSettings(double usdNaPln, double usdNaEur)
 		{
-			// ... kod aktualizuj¹cy kursy walut
-
-			// Porównaj kursy i ustaw kolor etykiet
 			double aktualnyKursPLN = Double::Parse(textBox1->Text);
 			double aktualnyKursEUR = Double::Parse(textBox2->Text);
 
@@ -98,10 +96,6 @@ namespace Kalkulator {
 				label1->Refresh();
 				label2->Refresh();
 			}
-
-			// ... inne operacje
-
-			// Mo¿esz równie¿ zaktualizowaæ kontrolki lub wykonaæ inne operacje, jeœli to konieczne
 		}
 	private: System::Windows::Forms::TextBox^ textBox1;
 	protected:
@@ -326,7 +320,7 @@ namespace Kalkulator {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(672, 349);
+			this->label8->Location = System::Drawing::Point(672, 350);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(35, 13);
 			this->label8->TabIndex = 19;
@@ -348,9 +342,9 @@ namespace Kalkulator {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(583, 129);
+			this->pictureBox1->Location = System::Drawing::Point(569, 129);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(183, 199);
+			this->pictureBox1->Size = System::Drawing::Size(206, 199);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->pictureBox1->TabIndex = 21;
 			this->pictureBox1->TabStop = false;
@@ -364,7 +358,7 @@ namespace Kalkulator {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(778, 371);
+			this->ClientSize = System::Drawing::Size(797, 388);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
@@ -403,13 +397,10 @@ namespace Kalkulator {
 		usdNaEur = Double::Parse(textBox2->Text);
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		// Create an instance of MyForm3
 		MyForm3^ form3 = gcnew MyForm3();
 
-		// Show MyForm3
 		form3->ShowDialog();
 
-		// Retrieve values from MyForm3 and set them in MyForm1
 		textBox1->Text = form3->GetTextBox1Value();
 		textBox2->Text = form3->GetTextBox2Value();
 		usdNaPln = Double::Parse(textBox1->Text);
@@ -434,11 +425,7 @@ namespace Kalkulator {
 			label3->Text = "Nieprawid³owa kwota!";
 		}
 	}
-
-		   // Funkcja przeliczaj¹ca kursy walut
 		   double przewalutowanie(double kwota, String^ zWaluty, String^ naWalute) {
-			   // Kursy walut
-
 
 			   if (zWaluty == "PLN") {
 				   if (naWalute == "USD") {
@@ -485,7 +472,6 @@ namespace Kalkulator {
 
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			try {
-				// Wczytaj dane z pliku
 				StreamReader^ sr = gcnew StreamReader(openFileDialog1->FileName);
 				textBox4->Text = sr->ReadToEnd();
 				sr->Close();
@@ -504,8 +490,6 @@ namespace Kalkulator {
 			sw->Write(textBox4->Text);
 			sw->Close();
 			label7->Text = "Zapisano do pliku: " + fileName;
-
-			// Wyczyœæ zawartoœæ textBox2
 			textBox4->Clear();
 		}
 		catch (Exception^ ex) {
@@ -518,13 +502,13 @@ namespace Kalkulator {
 		label7->Text = "Stan zapisu/odczytu";
 		label3->Text = "Kwota";
 	}
-private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-	DateTime czas = DateTime::Now;
-	label8->Text = czas.Hour.ToString("D2") + ":" + czas.Minute.ToString("D2") +
-		":" + czas.Second.ToString("D2");
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		DateTime czas = DateTime::Now;
+		label8->Text = czas.Hour.ToString("D2") + ":" + czas.Minute.ToString("D2") +
+			":" + czas.Second.ToString("D2");
 
-	label9->Text = czas.Day.ToString("D2") + "-" + czas.Month.ToString("D2") +
-		"-" + czas.Year.ToString("D2") + " " + czas.DayOfWeek.ToString();
-}
+		label9->Text = czas.Day.ToString("D2") + "-" + czas.Month.ToString("D2") +
+			"-" + czas.Year.ToString("D2") + " " + czas.DayOfWeek.ToString();
+	}
 };
 }

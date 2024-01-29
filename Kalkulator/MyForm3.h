@@ -22,9 +22,6 @@ namespace Kalkulator {
 			//TODO: W tym miejscu dodaj kod konstruktora
 			//
 		}
-
-		// ... other controls and methods
-
 		String^ GetTextBox1Value() {
 			return textBox1->Text;
 		}
@@ -78,6 +75,7 @@ namespace Kalkulator {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 0;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm3::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -88,7 +86,7 @@ namespace Kalkulator {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(153, 171);
+			this->button1->Location = System::Drawing::Point(150, 171);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 2;
@@ -98,7 +96,7 @@ namespace Kalkulator {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(47, 171);
+			this->button2->Location = System::Drawing::Point(55, 171);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 3;
@@ -108,7 +106,7 @@ namespace Kalkulator {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(78, 19);
+			this->label1->Location = System::Drawing::Point(78, 32);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(66, 13);
 			this->label1->TabIndex = 4;
@@ -146,11 +144,12 @@ namespace Kalkulator {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void MyForm3_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-
-}
+	private: System::Void MyForm3_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 };
 }
