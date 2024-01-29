@@ -1,0 +1,5 @@
+C:\Projekty\Kalkulator\Kalkulator\x64\Debug\Kalkulator.vcxproj.AssemblyReference.cache
+C:\Projekty\Kalkulator\Kalkulator\x64\Debug\Kalkulator.MyForm1.resources
+C:\Projekty\Kalkulator\Kalkulator\x64\Debug\Kalkulator.MyForm3.resources
+C:\Projekty\Kalkulator\Kalkulator\x64\Debug\Kalkulator.vcxproj.GenerateResource.cache
+C:\Projekty\Kalkulator\Kalkulator\x64\Debug\Kalkulator.MyForm2.resources
